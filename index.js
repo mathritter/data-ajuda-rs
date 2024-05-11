@@ -7,6 +7,20 @@ const header = columns.map((val) => val.name);
 
 const values = [];
 
+const csvFolder = "./csv";
+const jsonFolder = "./output";
+try {
+  if (!fs.existsSync(csvFolder)) {
+    fs.mkdirSync(csvFolder);
+  }
+  
+  if (!fs.existsSync(jsonFolder)) {
+    fs.mkdirSync(jsonFolder);
+  }
+} catch (err) {
+  console.error(err);
+}
+
 rows.map((row) => {
   const newObj = {};
   Object.keys(row.cellValuesByColumnId).forEach((cell) => {
@@ -67,7 +81,6 @@ fs.readFile(`./output/${fileName}.json`, (err, data) => {
     });
     csv += arr.join(";") + "\n";
   });
-  
 
   fs.writeFile(`./csv/${fileName}.csv`, csv, (error) => {
     if (error) {
