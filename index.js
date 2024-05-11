@@ -92,5 +92,3 @@ fs.readFile(`./output/${fileName}.json`, (err, data) => {
     console.log("csv written correctly");
   });
 });
-
-// readyData.
